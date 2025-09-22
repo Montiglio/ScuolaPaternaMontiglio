@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Storia della Scuola Paterna Maschile — ascolta il racconto e scopri il progetto. (IT/EN)" />
+  <meta name="description" content="Storia della Scuola Paterna Maschile” ascolta il racconto e scopri il progetto. (IT/EN)" />
   <meta name="theme-color" content="#0f172a" />
   <title>Scuola Paterna Maschile</title>
 
@@ -84,6 +84,72 @@
     }
     .muted{color:var(--muted); font-size:.9rem}
     audio{width:100%}
+    .history-wrap{
+      display:grid;
+      gap:1.5rem;
+      background:linear-gradient(135deg, #0f172a 0%, #1e293b 65%);
+      border-radius:24px;
+      overflow:hidden;
+      color:#fff;
+      box-shadow:0 10px 30px rgba(15,23,42,.35);
+    }
+    .history-visual{
+      position:relative;
+      min-height:16rem;
+    }
+    .history-visual img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+    }
+    .history-content{
+      padding:1.75rem;
+      display:flex;
+      flex-direction:column;
+      gap:1rem;
+      justify-content:center;
+    }
+    .history-content .tag{
+      color:#facc15;
+      letter-spacing:.18em;
+    }
+    .history-heading{
+      margin:0;
+      font-size:clamp(1.5rem, 4vw, 2.4rem);
+      color:#f8fafc;
+    }
+    .history-text{
+      margin:0;
+      color:#e2e8f0;
+    }
+    .history-actions{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      flex-wrap:wrap;
+      gap:.75rem;
+    }
+    .history-actions .cta{
+      background:#facc15;
+      color:#3b2900;
+    }
+    @media (min-width:48rem){
+      .history-wrap{
+        grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);
+        align-items:stretch;
+      }
+      .history-content{
+        padding:2.25rem;
+      }
+      .history-visual::after{
+        content:"";
+        position:absolute;
+        inset:0;
+        background:linear-gradient(180deg, rgba(15,23,42,.05), rgba(15,23,42,.55));
+      }
+    }
     .sr-only{position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0}
 
     /* Motion preferences */
@@ -116,9 +182,9 @@
     </div>
 
     <div class="hero-content container">
-      <div class="tag" data-i18n="tagline">Storia • Cultura • Comunità</div>
+      <div class="tag" data-i18n="tagline">Storia, Cultura, Comunità </div>
       <h1 data-i18n="title">Scuola Paterna</h1>
-      <p class="sub" data-i18n="subtitle">Scuola di prossimità, un luogo di istruzione, assistenza e socialità.</p>
+      <p class="sub" data-i18n="subtitle">Scuola di prossimità : un luogo di istruzione, assistenza e socializzazione.</p>
       <a class="cta" href="#listen" data-i18n="cta">Ascolta il racconto</a>
     </div>
   </section>
@@ -128,7 +194,7 @@
     <div class="container">
       <h2 id="listen-h" class="sr-only">Ascolta</h2>
       <div class="card">
-        <p class="muted" data-i18n="audioNote">Ascolta il racconto completo (5 min).</p>
+        <p class="muted" data-i18n="audioNote">Ascolta il racconto completo (6 min).</p>
         <audio id="story" controls preload="none" aria-label="Ascolta la storia">
           <source id="storySrc" src="audio/storia-it.mp3" type="audio/mpeg">
           <!-- Optional: captions if you have them
@@ -140,16 +206,38 @@
     </div>
   </section>
 
+  <section class="section" id="history" aria-labelledby="history-h">
+    <div class="container">
+      <div class="history-wrap">
+        <figure class="history-visual">
+          <img src="images/aleramici.webp" srcset="images/aleramici.webp 1200w, images/hero-2400.webp 2400w" sizes="(min-width: 48rem) 38vw, 100vw" alt="Araldica Marchesato del Monferrato" loading="lazy" decoding="async" width="1200" height="800">
+        </figure>
+        <div class="history-content">
+          <span class="tag" data-i18n="historyTag">Racconti dal Monferrato</span>
+          <h2 class="history-heading" data-i18n="historyHeading">La Storia Medievale del Monferrato</h2>
+          <p class="history-text" data-i18n="historyText">Alcune mura di questa casa facevano parte del castello costruito in muratura a partire dal XII secolo. Nel 1213 le famiglie nobili di Montiglio si unirono al Marchese del Monferrato Guglielmo VI Aleramico.</p>
+          <div class="history-actions">
+            <a class="cta" href="monferrato-medioevo.html" data-i18n="historyCta">Segui il percorso audio per scoprire le gesta degli Aleramici</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Minimal i18n (IT default in HTML, EN in JS) -->
   <script>
     // English strings (Italian lives in the HTML for progressive enhancement)
     const STR = {
       en: {
-        tagline: "History • Culture • Community",
+        tagline: "History, Culture, Community",
         title: "Scuola Paterna",
         subtitle: "Local school, a place of education, assistance and socialization.",
         cta: "Listen to the story",
-        audioNote: "Listen to the full story (5 min)."
+        audioNote: "Listen to the full story (6 min).",
+        historyTag: "Stories from Monferrato",
+        historyHeading: "Monferrato Medieval History",
+        historyText: "Some walls of this house were part of the castle built in masonry starting from the XII century. In 1213 the noble families of Montiglio joined the Marquis of Monferrato Guglielmo VI Aleramico.",
+        historyCta: "Follow the audio trail to discover the deeds of the Aleramics"
       }
     };
 

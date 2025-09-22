@@ -1,0 +1,192 @@
+﻿<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Percorso audio sulla storia medievale del Monferrato, ottimizzato per smartphone (IT/EN)." />
+  <meta name="theme-color" content="#0f172a" />
+  <title>Monferrato nel Medioevo</title>
+  <style>
+    :root{
+      --bg:#0f172a;
+      --panel:#111c32;
+      --accent:#facc15;
+      --line:#1f2a44;
+      --text:#e2e8f0;
+      --muted:#94a3b8;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font:16px/1.55 system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      background:var(--bg);
+      color:var(--text);
+      -webkit-font-smoothing:antialiased;
+      text-rendering:optimizeLegibility;
+    }
+    a{color:inherit}
+    button{font:inherit}
+    .page{max-width:64rem;margin:0 auto;padding:1.5rem 1rem 3rem;display:flex;flex-direction:column;gap:2.5rem}
+    .page-header{display:flex;flex-direction:column;gap:1.25rem}
+    .page-meta{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+    .back{display:inline-flex;align-items:center;gap:.35rem;text-decoration:none;color:var(--muted);font-size:.9rem}
+    .back::before{content:"\2190";font-size:1rem}
+    .page-tag{padding:.35rem .75rem;border:1px solid var(--line);border-radius:999px;font-size:.75rem;letter-spacing:.12em;text-transform:uppercase}
+    h1{margin:0;font-size:clamp(2rem, 6vw, 3rem);color:#fff}
+    p{margin:0}
+    .lang{display:flex;gap:.5rem}
+    .chip{
+      border:1px solid #1e293b; background:rgba(17,28,50,.4);
+      padding:.35rem .7rem; border-radius:999px; font-size:.9rem;
+      cursor:pointer; color:var(--muted);
+      transition:background .2s ease, transform .06s ease, color .2s ease;
+    }
+    .chip:focus{outline:none; box-shadow:0 0 0 3px rgba(96,165,250,.6)}
+    .chip[aria-pressed="true"]{background:rgba(250,204,21,.15); border-color:rgba(250,204,21,.45); color:var(--accent)}
+    .chip:active{transform:translateY(1px)}
+    .audio-section{display:flex;flex-direction:column;gap:1.75rem}
+    .audio-grid{display:grid;gap:1.25rem}
+    .audio-card{background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:1.25rem;box-shadow:0 12px 30px rgba(15,23,42,.32);display:flex;flex-direction:column;gap:.85rem}
+    .audio-card h3{margin:0;font-size:1.05rem;color:#fff}
+    .audio-card p{color:var(--muted);font-size:.95rem}
+    audio{width:100%}
+    audio::-webkit-media-controls-panel{background:rgba(15,23,42,.65)}
+    .hint{color:var(--muted);font-size:.85rem}
+    .note{font-style:italic}
+    footer{font-size:.75rem;color:var(--muted);}
+    @media (min-width:48rem){
+      .audio-grid{grid-template-columns:repeat(auto-fit, minmax(15.5rem, 1fr))}
+      .audio-card{padding:1.5rem}
+    }
+    @media (prefers-reduced-motion: reduce){
+      .chip{transition:none}
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="page-header">
+      <div class="page-meta">
+        <a class="back" href="index.html" data-i18n="backLink">Torna alla home</a>
+        <span class="page-tag" data-i18n="pageTag">Medioevo</span>
+      </div>
+      <h1 data-i18n="pageTitle">I Marchesi del Monferrato</h1>
+      <p class="intro" data-i18n="pageIntro">Un itinerario audio per scoprire la Storia medievale di questi luoghi.</p>
+      <div class="lang" role="group" aria-label="Language">
+        <button id="pageLangIt" class="chip" aria-pressed="true" aria-label="Italiano">IT</button>
+        <button id="pageLangEn" class="chip" aria-pressed="false" aria-label="English">EN</button>
+      </div>
+    </header>
+
+    <main class="audio-section" aria-live="polite">
+      <div>
+        <h2 data-i18n="listenHeading">Audioracconti</h2>
+        <p class="hint" data-i18n="listenHint">Gli audio vengono caricati soltanto selezionandoli per la riproduzione.</p>
+      </div>
+
+      <div class="audio-grid" data-lang="it">
+        <article class="audio-card">
+          <h3>La nascita del Marchesato di Monferrato</h3>
+          <p>Storia e leggende di Aleramo, capostipite della famiglia Aleramica</p>
+          <audio controls preload="none" data-src="audio/Episodio1prjnew2.mp3" controlslist="nodownload" aria-label="Riproduci Le origini delle comunita rurali"></audio>
+        </article>
+        <article class="audio-card">
+          <h3>Da Aleramo a Guglielmo V detto il Vecchio</h3>
+          <p>Ascesa degli Aleramici, potere politico, legami dinastici, fondazioni monastiche e prima partecipazione alle crociate</p>
+          <audio controls preload="none" data-src="audio/Episodiosecondovs2.mp3" controlslist="nodownload" aria-label="Riproduci Castelli e difesa del territorio"></audio>
+        </article>
+        <article class="audio-card">
+          <h3>Guglielmo Spadalunga a Gerusalemme e Ranieri a Bisanzio</h3>
+          <p>Il bel Guglielmo sposa Sibilla, sorella del re lebbroso di Gerusalemme. Il giovane Ranieri sposa la figlia dell'imperatore di Costantinopoli</p>
+          <audio controls preload="none" data-src="audio/Terzo episodio.mp3" controlslist="nodownload" aria-label="Riproduci Pellegrinaggi e abbazie"></audio>
+        </article>
+        <article class="audio-card">
+          <h3>Il mitico Corrado</h3>
+          <p>Alleato e sfidante del Sacro Romano Impero, Cesare dell'Impero Bizantino, eroe delle crociate, re eletto di Gerusalemme, vittima degli Assassini.</p>
+          <audio controls preload="none" data-src="audio/Episodio4.mp3" controlslist="nodownload" aria-label="Riproduci Mercati e vie del vino"></audio>
+        </article>
+        <article class="audio-card">
+          <h3>Bonifacio, condottiero della Quarta Crociata</h3>
+          <p>La quarta crociata dirotta su Costantinopoli e la distrugge. Guglielmo VI, figlio di Bonifacio, si dedica al Monferrato e lega Montiglio al Marchesato.</p>
+          <audio controls preload="none" data-src="audio/episodio5.mp3" controlslist="nodownload" aria-label="Riproduci Vita quotidiana e arti"></audio>
+        </article>
+      </div>
+
+      <div class="audio-grid" data-lang="en" hidden>
+        <article class="audio-card">
+          <h3>The Marquises of Monferrato</h3>
+          <p>A fast overview in English podcast format that links the Italian chapters and highlights the key events.</p>
+          <audio controls preload="none" data-src="audio/monferrato-en-1.mp3" controlslist="nodownload" aria-label="Play Foundations of Medieval Monferrato"></audio>
+        </article>
+      </div>
+    </main>
+
+    <footer>
+      Aggiorneremo questa pagina con nuovi contributi sonori mano a mano che il progetto cresce.
+    </footer>
+  </div>
+
+  <script>
+    const STR = {
+      en: {
+        pageTitle: "The Marquises of Monferrato",
+        pageIntro: "An on-demand audio to discover key events of Monferrato's Medieval History.",
+        listenHeading: "Audio narratives",
+        listenHint: "Audio files load only when you select play.",
+        backLink: "Back to home",
+        pageTag: "Middle Ages"
+      }
+    };
+
+    const $ = s => document.querySelector(s);
+    const $$ = s => Array.from(document.querySelectorAll(s));
+    const sections = $$('[data-lang]');
+    const players = $$('audio[data-src]');
+    const ORIGINAL_TITLE = document.title;
+
+    function applyTexts(useEn){
+      $$('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (!el.dataset.original) el.dataset.original = el.textContent;
+        el.textContent = useEn ? (STR.en[key] || el.dataset.original) : el.dataset.original;
+      });
+      document.title = useEn ? STR.en.pageTitle : ORIGINAL_TITLE;
+    }
+
+    function toggleLanguage(lang){
+      const useEn = (lang === 'en');
+      document.documentElement.lang = useEn ? 'en' : 'it';
+      applyTexts(useEn);
+
+      sections.forEach(section => {
+        const isMatch = section.dataset.lang === (useEn ? 'en' : 'it');
+        section.hidden = !isMatch;
+        section.style.display = isMatch ? '' : 'none';
+      });
+
+      players.forEach(player => { if (!player.paused) player.pause(); });
+
+      $('#pageLangIt').setAttribute('aria-pressed', String(!useEn));
+      $('#pageLangEn').setAttribute('aria-pressed', String(useEn));
+    }
+
+    function preparePlayer(player){
+      const loadSource = () => {
+        if (!player.src && player.dataset.src){
+          player.src = player.dataset.src;
+          player.load();
+        }
+      };
+      ['pointerdown','play','focus'].forEach(evt => player.addEventListener(evt, loadSource, { once:true }));
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      players.forEach(preparePlayer);
+      toggleLanguage('it');
+      $('#pageLangIt').addEventListener('click', () => toggleLanguage('it'));
+      $('#pageLangEn').addEventListener('click', () => toggleLanguage('en'));
+    });
+  </script>
+</body>
+</html>
+
